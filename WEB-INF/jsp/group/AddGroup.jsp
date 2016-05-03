@@ -24,10 +24,12 @@
 
 
 <fieldset>
-<legend>グループの説明文</legend>
-<input type="text" maxlength="50" name="description" value="" required>
-このグループに関する説明文を記述してください
+<legend>グループ写真のアップロード</legend>
+<input type="file" name="groupImage">
+グループ写真をアップロードしてください
 </fieldset>
+
+<input type="submit" value="グループを作成する">
 
 </form>
 
