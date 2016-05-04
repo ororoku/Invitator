@@ -4,6 +4,10 @@ DROP TABLE post CASCADE CONSTRAINTS;
 DROP TABLE matching CASCADE CONSTRAINTS;
 DROP TABLE usergroup CASCADE CONSTRAINTS;
 
+DROP SEQUENCE seq_post_id;
+DROP SEQUENCE seq_matching_id;
+DROP SEQUENCE seq_user_group_id;
+
 commit;
 
 create table usertable(
@@ -28,12 +32,12 @@ create table grouptable(
 );
 
 create table post(
-	post_id number(8),
+	post_id nchar(5),
 	user_id nchar(20),
-	matching_id number(8),
+	matching_id nchar(5),
 	purpose number(1),
-	time_start number(4),
-	time_end number(4),
+	time_start nchar(4),
+	time_end nchar(4),
 	is_delete number(1),
 	create_time DATE DEFAULT SYSDATE,
 	constraint pk_post primary key( post_id ),
@@ -41,8 +45,8 @@ create table post(
 );
 
 create table matching(
-	matching_id number(8),
-	go_time number(4),
+	matching_id nchar(5),
+	go_time nchar(4),
 	purpose number(1),
 	is_closed number(1),
 	constraint pk_matching primary key( matching_id ),
@@ -50,7 +54,7 @@ create table matching(
 );
 
 create table usergroup(
-	user_group_id number(8),
+	user_group_id nchar(5),
 	user_id nchar(20),
 	group_name nvarchar2(20),
 	is_ignore number(1),
@@ -58,3 +62,28 @@ create table usergroup(
 	constraint ck_ignoreflag CHECK (is_ignore IN ('1', '0'))
 );
 
+CREATE SEQUENCE seq_post_id
+START with 4
+INCREMENT BY 1
+MINVALUE 4
+MAXVALUE 99999
+NOCYCLE
+CACHE 10;
+
+CREATE SEQUENCE seq_matching_id
+START with 4
+INCREMENT BY 1
+MINVALUE 4
+MAXVALUE 99999
+NOCYCLE
+CACHE 10;
+
+CREATE SEQUENCE seq_user_group_id
+START with 4
+INCREMENT BY 1
+MINVALUE 4
+MAXVALUE 99999
+NOCYCLE
+CACHE 10;
+
+commit;
