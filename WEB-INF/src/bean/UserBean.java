@@ -10,6 +10,10 @@ public class UserBean implements java.io.Serializable {
 	String description;
 	String address;
 
+	public UserBean(){
+		super();
+	}
+
 	public UserBean(String userId, String userName, String password, String userImage, String description, String address){
 		this.userId = userId;
 		this.userName = userName;
