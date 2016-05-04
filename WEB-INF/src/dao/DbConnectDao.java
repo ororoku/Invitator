@@ -17,7 +17,7 @@ public class DbConnectDao {
 		protected PreparedStatement pstmt = null;
 		protected ResultSet rs = null;
 		protected Context context = null;
-		protected String localName = "java:comp/env/jdbc/mecinomy";
+		protected String localName = "java:comp/env/jdbc/invitator";
 
 		public void getConnection() throws NamingException,SQLException{
 			//コンテキストの生成
