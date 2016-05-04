@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page isELIgnored ="false" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +11,10 @@
 </head>
 <body>
 
-<form action="/servlet/AddGroupCompleteServlet" method="post">
+<h1><c:out value="${errorMessage}"/></h1>
+<c:remove var="errorMessage" scope="session"/>
+
+<form action="/Invitator/AddGroupComplete" method="post">
 
 <fieldset>
 <legend>グループ名</legend>
@@ -24,10 +30,12 @@
 
 
 <fieldset>
-<legend>グループの説明文</legend>
-<input type="text" maxlength="50" name="description" value="" required>
-このグループに関する説明文を記述してください
+<legend>グループ写真のアップロード</legend>
+<input type="file" name="groupImage">
+グループ写真をアップロードしてください
 </fieldset>
+
+<input type="submit" value="グループを作成する">
 
 </form>
 
